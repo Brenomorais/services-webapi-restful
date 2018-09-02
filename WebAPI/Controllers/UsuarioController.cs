@@ -26,6 +26,13 @@ namespace WebAPI.Controllers
         [Route("CadastrarUsuario")]
         public string CadastrarUsuario(UsuarioModel usuario)
         {
+            Random rnd = new Random();
+            
+            if(usuario.Codigo == 0)
+            {
+                usuario.Codigo = rnd.Next(1, 50);
+            }
+
             listaUsuarios.Add(usuario);
 
             return "Usuário cadastrado com sucesso!";
